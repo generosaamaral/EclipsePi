@@ -25,7 +25,7 @@ import br.com.SafePet.ProjetoIntegrador.model.Postagem;//importação da classe 
 public class postagemController {
 	private BDPostagem bd = new BDPostagem();//iniciamos o banco de dados e demos o nome de bd.
 	
- @PostMapping("/home/new")//essa notação inidica que vamos ler algum conteudo do usuario e passamos a 
+ @PostMapping("/home")//essa notação inidica que vamos ler algum conteudo do usuario e passamos a 
  //rota entre parenteses
  
  public ResponseEntity<Postagem> novaPostagem(@RequestBody Postagem postagem) {//esse método vai 
