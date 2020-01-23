@@ -1,0 +1,68 @@
+package br.com.SafePet.ProjetoIntegrador.controller;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.SafePet.ProjetoIntegrador.bd.BDPostagem;
+import br.com.SafePet.ProjetoIntegrador.model.Postagem;
+
+@RestController
+@CrossOrigin("*")
+public class postagemController {
+	Scanner sc = new Scanner(System.in);
+	private BDPostagem bd = new BDPostagem();
+	
+ @PostMapping("/home")
+ public ResponseEntity<Postagem> novaPostagem(@RequestBody Postagem postagem) {
+	 /*Postagem p = new Postagem();
+	 
+	 System.out.println("Digite o titulo da sua publicação: ");
+	 p.setTitulo(sc.nextLine());//pega o titulo que o usuario digitar
+	 System.out.println("Digite o conteúdo da publicação");
+	 p.setConteudo(sc.nextLine());//para pegar o conteudo da postagem
+	 System.out.println("Aperte 1 para publicar");
+	 return p;*/
+	 bd.gravar(postagem);
+	 return ResponseEntity.ok(postagem);
+	 
+ }
+ @GetMapping("/home/{id}")
+ public ResponseEntity<Postagem> getPostagem(@PathVariable int id){
+	 Postagem post = bd.buscar(id);
+	 if(post!= null) {
+		 return ResponseEntity.ok(post);
+	 }
+	 else {
+		 return ResponseEntity.notFound().build();
+	 }
+ }
+ @GetMapping("/home/todos")
+ public ResponseEntity<ArrayList<Postagem>>getTodos(){
+	 return ResponseEntity.ok(bd.buscarTodos());
+ }
+ @PutMapping("/home")
+ public ResponseEntity<String> alterarPostagem(@RequestBody Postagem postagem){
+	 bd.atualizar(postagem);
+	 return ResponseEntity.ok("Sucesso");
+ }
+ @DeleteMapping("/home/{id}")
+ public ResponseEntity<String> removePostagem(@PathVariable int id){
+	 if(bd.apagar(id)) {
+		 return ResponseEntity.ok("Deleted");
+	 }
+	 else {
+		 return ResponseEntity.notFound().build();
+	 }
+	 
+ }
+}

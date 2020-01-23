@@ -1,0 +1,5 @@
+package br.com.SafePet.ProjetoIntegrador.bd;
+
+public class BDPostagem {
+
+}
