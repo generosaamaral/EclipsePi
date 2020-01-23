@@ -29,9 +29,7 @@ public class Postagem {
 		this.conteudo = conteudo;
 	}
 
-	public String toString() {//esse método vai ser chamado quando percisarmos mostrar/usar o json
-		//por isso retornamos um tipo String.
+	public String toString() {
 		return "\"id\":"+id+"\"titulo\":" + titulo + "\"conteudo\":" + conteudo;
-		//no retorno montamos uma String em formato JSON.
 	}
 }
