@@ -22,7 +22,7 @@ public class postagemController {
 	Scanner sc = new Scanner(System.in);
 	private BDPostagem bd = new BDPostagem();
 	
- @PostMapping("/home")
+ @PostMapping("/home/new")
  public ResponseEntity<Postagem> novaPostagem(@RequestBody Postagem postagem) {
 	 /*Postagem p = new Postagem();
 	 
@@ -51,9 +51,9 @@ public class postagemController {
 	 return ResponseEntity.ok(bd.buscarTodos());
  }
  @PutMapping("/home")
- public ResponseEntity<String> alterarPostagem(@RequestBody Postagem postagem){
+ public ResponseEntity<Postagem> alterarPostagem(@RequestBody Postagem postagem){
 	 bd.atualizar(postagem);
-	 return ResponseEntity.ok("Sucesso");
+	 return ResponseEntity.ok(postagem);
  }
  @DeleteMapping("/home/{id}")
  public ResponseEntity<String> removePostagem(@PathVariable int id){
