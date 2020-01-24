@@ -25,17 +25,11 @@ import br.com.SafePet.ProjetoIntegrador.model.Postagem;//importação da classe 
 public class postagemController {
 	private BDPostagem bd = new BDPostagem();//iniciamos o banco de dados e demos o nome de bd.
 	
-<<<<<<< HEAD
- @PostMapping("/home/new")
- public ResponseEntity<Postagem> novaPostagem(@RequestBody Postagem postagem) {
-	 /*Postagem p = new Postagem();
-=======
- @PostMapping("/home/new")//essa notação inidica que vamos ler algum conteudo do usuario e passamos a 
+ @PostMapping("/home")//essa notação inidica que vamos ler algum conteudo do usuario e passamos a 
  //rota entre parenteses
  
  public ResponseEntity<Postagem> novaPostagem(@RequestBody Postagem postagem) {//esse método vai 
 	 //criar uma nova postagem vinda do usuario e retorna-la sem erros.
->>>>>>> 24b18969ebc9c93e6449be0eb07cfefd223f2d23
 	 
 	 bd.gravar(postagem);
 	 return ResponseEntity.ok(postagem);
@@ -60,16 +54,10 @@ public class postagemController {
 	 return ResponseEntity.ok(bd.buscarTodos());//e retorna o status ok 
  }
  @PutMapping("/home")
-<<<<<<< HEAD
- public ResponseEntity<Postagem> alterarPostagem(@RequestBody Postagem postagem){
-	 bd.atualizar(postagem);
-	 return ResponseEntity.ok(postagem);
-=======
  public ResponseEntity<String> alterarPostagem(@RequestBody Postagem postagem){
 	 bd.atualizar(postagem);//chamamos o método do banco de dados "Atualizar"
 	 return ResponseEntity.ok("Sucesso");//e retornamos a palavra "sucesso" *OBS: mesmo que a
 	 //postagem não seja alterada a mensagem "sucesso" aparece.
->>>>>>> 24b18969ebc9c93e6449be0eb07cfefd223f2d23
  }
  @DeleteMapping("/home/{id}")
  public ResponseEntity<String> removePostagem(@PathVariable int id){//esse método deleta uma 
